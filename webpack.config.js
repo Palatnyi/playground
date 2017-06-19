@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
-const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const projectRoot = process.cwd();
 
 const rules = [
@@ -42,14 +42,10 @@ const plugins = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     },
   }),
-  new StaticSiteGeneratorPlugin({
-    paths: [
-      '/',
-    ],
-    locals: {
-      greet: 'Hello'
-    }
-  })
+    new HtmlWebpackPlugin({
+        template: path.join(projectRoot, "/src/index.html"),
+        filename: "index.html"
+    })
 ];
 
 let entry = [
@@ -66,8 +62,7 @@ const config = {
   output: {
     path: path.resolve(projectRoot, "static"),
     filename: "bundle.js",
-    publicPath: "/",
-    libraryTarget: "umd"
+    publicPath: "/"
   },
   module: {rules}
 };

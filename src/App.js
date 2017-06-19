@@ -1,20 +1,12 @@
 import React, {PureComponent} from "react";
+import Layout from "./components/Layout/Layout";
 
-class App extends PureComponent {
-  componentWillMount() {
-    // console.log(window);
-  }
-  componentDidMount() {
-    console.log(window);
-  }
-  render() {
+function App() {
     return (
       <div id="app">
-        {"hello world from server"}
-        {typeof window === "object" ? "YES to client side rendering" : "NO to client side rendering"}
+        <Layout/>
       </div>
     );
-  }
 }
 
 export default App;

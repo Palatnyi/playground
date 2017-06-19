@@ -1,12 +1,13 @@
 import React from "react";
-import ReactDOMServer from "react-dom/server";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 import App from "./App";
-import Template from "./Template";
 
-export default () => {
-  return ReactDOMServer.renderToStaticMarkup(
-    <Template>
-      <App/>
-    </Template>
-  );
-}
+ReactDOM.render(
+  <Provider store={store()}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+
